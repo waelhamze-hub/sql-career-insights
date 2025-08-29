@@ -22,3 +22,7 @@ This repository serves as a **portfolio of SQL work**, showcasing the ability to
 - Aggregation using COUNT, AVG, and GROUP BY  
 - Common Table Expressions (CTEs)  
 - Data analysis for job trends and skill evaluation
+
+Contact
+
+For questions or feedback, reach out at hamze.wael@outlook.com.
