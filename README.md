@@ -3,7 +3,7 @@
 ## Overview
 sql-career-insights is a collection of SQL projects exploring **job market trends, salaries, and in-demand skills** for **Data Analyst roles**, with a focus on **remote positions**.  
 The projects demonstrate how to extract insights from structured job posting data using SQL, including aggregations, joins, and filtering techniques.
-- **data/**: Contains the datasets used to run the SQL queries locally.  
+- **projects/data/**: Contains the datasets used to run the SQL queries locally.  
 - **projects/**: Each project folder contains SQL files and a dedicated README explaining the project.
 
 ## Purpose
