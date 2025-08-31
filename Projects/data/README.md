@@ -29,15 +29,34 @@ It contains reference information about companies such as their IDs, names, offi
 | link_google | Direct Google search link for the company        |
 | thumbnail   | Company thumbnail image (Google-hosted preview)  |
 
-### Sample Rows  
-company_id | name | link | link_google | thumbnail
-0 | Cryptology | NULL | https://www.google.com/
-... | https://encrypted-tbn0
-...
-1 | Edraak | NULL | https://www.google.com/
-... | https://encrypted-tbn0
-...
-2 | Groupe ADP | http://www.groupeadp.fr/
- | https://www.google.com/
-... | https://encrypted-tbn0
-...
+
+---
+
+## Data: `job_postings_fact.csv`
+
+The `data/job_postings_fact.csv` file is a **fact table** that contains detailed information about job postings.  
+It includes attributes such as job title, location, source platform, schedule type, remote option, posting date, and salary details.  
+This dataset can be joined with dimension tables (e.g., `company_dim.csv`) using `company_id`.  
+
+### Schema  
+| Column                | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| `job_id`              | Unique identifier for the job posting                                       |
+| `company_id`          | Foreign key referencing the company (from `company_dim.csv`)                |
+| `job_title_short`     | Standardized short form of the job title (e.g., "Data Analyst")             |
+| `job_title`           | Full job title as listed in the posting                                     |
+| `job_location`        | Location of the job posting                                                 |
+| `job_via`             | Source platform (e.g., LinkedIn, Trabajo.org)                              |
+| `job_schedule_type`   | Type of employment (e.g., Full-time, Contractor)                            |
+| `job_work_from_home`  | Boolean indicating if the role is remote                                    |
+| `search_location`     | Standardized search location used in data collection                        |
+| `job_posted_date`     | Date and time the job was posted                                            |
+| `job_no_degree_mention` | Boolean indicating if no degree requirement is mentioned                  |
+| `job_health_insurance` | Boolean indicating if health insurance is mentioned                        |
+| `job_country`         | Country where the job is located                                            |
+| `salary_rate`         | Salary rate type (e.g., yearly, hourly)                                     |
+| `salary_year_avg`     | Average yearly salary (if provided)                                         |
+| `salary_hour_avg`     | Average hourly salary (if provided)                                         |
+
+
+
