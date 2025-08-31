@@ -32,31 +32,63 @@ It contains reference information about companies such as their IDs, names, offi
 
 ---
 
-## Data: `job_postings_fact.csv`
+## Data: job_postings_fact.csv
 
-The `data/job_postings_fact.csv` file is a **fact table** that contains detailed information about job postings.  
+The data/job_postings_fact.csv file is a **fact table** that contains detailed information about job postings.  
 It includes attributes such as job title, location, source platform, schedule type, remote option, posting date, and salary details.  
-This dataset can be joined with dimension tables (e.g., `company_dim.csv`) using `company_id`.  
+This dataset can be joined with dimension tables (e.g., company_dim.csv) using company_id.  
 
 ### Schema  
 | Column                | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
-| `job_id`              | Unique identifier for the job posting                                       |
-| `company_id`          | Foreign key referencing the company (from `company_dim.csv`)                |
-| `job_title_short`     | Standardized short form of the job title (e.g., "Data Analyst")             |
-| `job_title`           | Full job title as listed in the posting                                     |
-| `job_location`        | Location of the job posting                                                 |
-| `job_via`             | Source platform (e.g., LinkedIn, Trabajo.org)                              |
-| `job_schedule_type`   | Type of employment (e.g., Full-time, Contractor)                            |
-| `job_work_from_home`  | Boolean indicating if the role is remote                                    |
-| `search_location`     | Standardized search location used in data collection                        |
-| `job_posted_date`     | Date and time the job was posted                                            |
-| `job_no_degree_mention` | Boolean indicating if no degree requirement is mentioned                  |
-| `job_health_insurance` | Boolean indicating if health insurance is mentioned                        |
-| `job_country`         | Country where the job is located                                            |
-| `salary_rate`         | Salary rate type (e.g., yearly, hourly)                                     |
-| `salary_year_avg`     | Average yearly salary (if provided)                                         |
-| `salary_hour_avg`     | Average hourly salary (if provided)                                         |
+| job_id              | Unique identifier for the job posting                                       |
+| company_id          | Foreign key referencing the company (from company_dim.csv)                |
+| job_title_short     | Standardized short form of the job title (e.g., "Data Analyst")             |
+| job_title           | Full job title as listed in the posting                                     |
+| job_location        | Location of the job posting                                                 |
+| job_via             | Source platform (e.g., LinkedIn, Trabajo.org)                              |
+| job_schedule_type   | Type of employment (e.g., Full-time, Contractor)                            |
+| job_work_from_home  | Boolean indicating if the role is remote                                    |
+| search_location     | Standardized search location used in data collection                        |
+| job_posted_date     | Date and time the job was posted                                            |
+| job_no_degree_mention | Boolean indicating if no degree requirement is mentioned                  |
+| job_health_insurance | Boolean indicating if health insurance is mentioned                        |
+| job_country         | Country where the job is located                                            |
+| salary_rate         | Salary rate type (e.g., yearly, hourly)                                     |
+| salary_year_avg     | Average yearly salary (if provided)                                         |
+| salary_hour_avg     | Average hourly salary (if provided)                                         |
+
+
+---
+
+## Data: skills_dim.csv
+
+The data/skills_dim.csv file is a **dimension table** that contains standardized skill information.  
+It includes unique skill identifiers, skill names, and their classification by type.  
+This dataset can be linked to job postings through a bridging table (e.g., skills_job_dim.csv) to analyze demand for specific skills across job postings.  
+
+### Schema  
+| Column    | Description                                           |
+|-----------|-------------------------------------------------------|
+| skill_id | Unique identifier for the skill                      |
+| skills   | Name of the skill (e.g., SQL, Python, Java)          |
+| type     | Category of the skill (e.g., programming, tools)     |
+
+
+---
+
+## Data: skills_job_dim.csv
+
+The data/skills_job_dim.csv file is a **bridge table** that connects job postings with the skills required for each job.  
+It allows analysis of skill demand across job postings and can be joined with job_postings_fact.csv and skills_dim.csv for detailed insights.  
+
+### Schema  
+| Column    | Description                                      |
+|-----------|--------------------------------------------------|
+| job_id  | Foreign key referencing job_postings_fact.csv |
+| skill_id| Foreign key referencing skills_dim.csv        |
+
+
 
 
 
